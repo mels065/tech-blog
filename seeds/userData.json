@@ -1,0 +1,17 @@
+[
+    {
+        "username": "Alice In Wonderland",
+        "password": "pasword123",
+        "email": "alice@wonderland.com"
+    },
+    {
+        "username": "wumbo",
+        "password": "pasword425",
+        "email": "patrickstar@bikinibottom.com"
+    },
+    {
+        "username": "admin",
+        "password": "pasword987",
+        "email": "larry@gmail.com"
+    }
+]
