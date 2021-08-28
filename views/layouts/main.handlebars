@@ -4,6 +4,20 @@
         <title>Tech Blog</title>
     </head>
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    {{#if isLoggedin}}
+                        <li class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a id="logout">Logout</a></li>
+                    {{else}}
+                        <li class="nav-item"><a href="/login">Login</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+            <h1>{{heading}}</h1>
+        </header>
         {{{body}}}
     </body>
 </html>

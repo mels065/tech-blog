@@ -1,1 +1,5 @@
-<h1>Hello, World</h1>
+<div id="posts">
+    {{#each posts as |post|}}
+    {{> post-display}}
+    {{/each}}
+</div>
