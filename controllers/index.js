@@ -26,11 +26,24 @@ router.get('/', async (req, res) => {
             {
                 heading: 'Tech Blog',
                 posts,
-                isLoggedin: req.session.logged_in
+                isLoggedin: req.session.is_loggedin
             }
         );
     } catch (err) {
         res.status(500).json(err.message);
+    }
+});
+
+router.get('/login', (req, res) => {
+    if (req.session.isLoggedin) {
+        res.redirect('/');
+    } else {
+        res.render(
+            'login',
+            {
+                heading: 'Login/Register'
+            }
+        );
     }
 });
 

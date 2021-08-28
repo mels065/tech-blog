@@ -4,8 +4,9 @@ const session = require('express-session');
 const path = require('path');
 
 const sequelize = require('./config/connection');
-const router = require('./controllers');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const router = require('./controllers');
 
 const helpers = require('./utils/helpers');
 
@@ -29,8 +30,8 @@ async function init() {
     app.engine('handlebars', hbs.engine);
     app.set('view engine', 'handlebars');
 
-    app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
     app.use(express.static(path.join(__dirname, 'public')));
 
