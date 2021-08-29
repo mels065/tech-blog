@@ -4,6 +4,8 @@ const { User, Post, Comment } = require('../models');
 
 const apiRouter = require('./api');
 
+const withAuth = require('../utils/with-auth');
+
 const router = express.Router();
 
 router.use('/api', apiRouter);
@@ -30,7 +32,7 @@ router.get('/', async (req, res) => {
             }
         );
     } catch (err) {
-        res.status(400).end()
+        res.status(400).json({ message: err.message });
     }
 });
 
@@ -78,7 +80,25 @@ router.get('/post/:id', async (req, res) => {
         }
     } catch (err) {
         console.error(err);
-        res.status(400).end();
+        res.status(400).json({ message: err.message });
+    }
+});
+
+router.get('/dashboard', withAuth, async (req, res) => {
+    try {
+        const posts = (await Post.findAll(
+            { where: { user_id: req.session.user_id } }
+        )).map(post => post.get());
+        res.render(
+            'dashboard',
+            {
+                posts,
+                heading: 'Dashboard',
+                isLoggedin: req.session.is_loggedin
+            }
+        );
+    } catch (err) {
+        res.status(400).json({ message: err.message })
     }
 });
 

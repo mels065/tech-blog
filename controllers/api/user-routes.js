@@ -39,10 +39,9 @@ userRouter.post('/login', async (req, res) => {
 userRouter.post('/logout', (req, res) => {
     if (req.session.is_loggedin) {
         req.session.destroy();
-        console.log('Work');
         res.redirect('/');
     } else {
-        res.json("Failed to logout");
+        res.json({ message: "Failed to logout" });
     }
 });
 

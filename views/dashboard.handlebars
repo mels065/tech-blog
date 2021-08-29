@@ -1,0 +1,9 @@
+<div id="dashboard">
+    <ul id="my-posts">
+        {{#each posts as |post|}}
+        {{> dashboard-post}}
+        {{/each}}
+    </ul>
+
+    <a href="/post/create">Create Post +</a>
+</div>
