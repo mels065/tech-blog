@@ -1,0 +1,6 @@
+{{> post-display post}}
+<ul>
+    {{#each post.comments as |comment|}}
+    {{> comment-display}}
+    {{/each}}
+</ul>
