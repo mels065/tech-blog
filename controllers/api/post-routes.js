@@ -6,6 +6,20 @@ const withAuth = require('../../utils/with-auth');
 
 const postRouter = express.Router();
 
+postRouter.post('/', withAuth, async (req, res) => {
+    try {
+        const post = (await Post.create(
+            {
+                ...req.body,
+                user_id: req.session.user_id
+            }
+        )).get();
+        res.json(post);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 postRouter.post('/:id/comment', withAuth, async (req, res) => {
     try {
         const { id } = req.params;

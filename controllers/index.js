@@ -36,6 +36,16 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/post', withAuth, (req, res) => {
+    res.render(
+        'post-create',
+        {
+            heading: 'Dashboard',
+            isLoggedin: req.session.is_loggedin
+        }
+    );
+});
+
 router.get('/post/:id', async (req, res) => {
     try {
         const { id } = req.params;
