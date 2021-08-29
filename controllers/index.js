@@ -64,7 +64,7 @@ router.get('/post/:id', async (req, res) => {
                 {
                     heading: 'Tech Blog',
                     post,
-                    isLoggedIn: req.session.is_loggedin
+                    isLoggedin: req.session.is_loggedin
                 }
             )
         } else {
@@ -72,7 +72,7 @@ router.get('/post/:id', async (req, res) => {
                 '404',
                 {
                     heading: 'Tech Blog',
-                    isLoggedIn: req.session.is_loggedin
+                    isLoggedin: req.session.is_loggedin
                 }
             )
         }

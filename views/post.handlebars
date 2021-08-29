@@ -4,3 +4,10 @@
     {{> comment-display}}
     {{/each}}
 </ul>
+{{#if isLoggedin}}
+<form id="comment-form">
+    <textarea name="comment"></textarea>
+    <button>Submit</button>
+</form>
+<script src="/js/submit-comment.js"></script>
+{{/if}}

@@ -8,7 +8,6 @@ async function logoutHandler() {
             }
         }
     );
-    console.log(response);
 
     if (response.ok) {
         document.location.reload();
