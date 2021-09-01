@@ -26,7 +26,6 @@ router.get('/', async (req, res) => {
         res.render(
             'home',
             {
-                heading: 'Tech Blog',
                 posts,
                 isLoggedin: req.session.is_loggedin
             }
@@ -36,7 +35,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/post', withAuth, (req, res) => {
+router.get('/post/', withAuth, (req, res) => {
     res.render(
         'post-create',
         {
@@ -74,7 +73,6 @@ router.get('/post/:id', async (req, res) => {
             res.render(
                 'post',
                 {
-                    heading: 'Tech Blog',
                     post,
                     isLoggedin: req.session.is_loggedin
                 }
@@ -83,13 +81,37 @@ router.get('/post/:id', async (req, res) => {
             res.render(
                 '404',
                 {
-                    heading: 'Tech Blog',
                     isLoggedin: req.session.is_loggedin
                 }
-            )
+            );
         }
     } catch (err) {
         console.error(err);
+        res.status(400).json({ message: err.message });
+    }
+});
+
+router.get('/post/edit/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id);
+        if (postData) {
+            const post = postData.get();
+            res.render(
+                'post-edit',
+                {
+                    post,
+                    isLoggedin: req.session.is_loggedin
+                }
+            )
+        } else {
+            res.render(
+                '404',
+                {
+                    isLoggedin: req.session.is_loggedin
+                }
+            );
+        }
+    } catch (err) {
         res.status(400).json({ message: err.message });
     }
 });

@@ -17,7 +17,11 @@
                     {{/if}}
                 </ul>
             </nav>
+            {{#if heading}}
             <h1>{{heading}}</h1>
+            {{else}}
+            <h1>Tech Blog</h1>
+            {{/if}}
         </header>
         {{{body}}}
     </body>
