@@ -25,14 +25,35 @@ postRouter.put('/:id', withAuth, async (req, res) => {
     try {
         const { id } = req.params;
         const post = await Post.findByPk(id);
-        if (post) {
+        if (!post) {
+            res.status(404).json({ message: 'Could not update post because it does not exist' });
+        } else if (req.session.user_id !== post.user_id) {
+            res.status(401).json({ message: "The current user does not have authorization to edit this post" });
+        } else {
             await Post.update(
                 req.body,
                 { where: { id } }
             );
             res.json({ message: 'Post successfully updated' });
+        }
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+postRouter.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const post = await Post.findByPk(id);
+        if (!post) {
+            res.status(404).json({ message: 'Could not delete post because it does not exist' });
+        } else if (req.session.user_id !== post.user_id) {
+            res.status(401).json({ message: "The current user does not have authorization to delete this post" });
         } else {
-            res.status(404).json({ message: 'Could not update post because it does not exist' });
+            await Post.destroy(
+                { where: { id } }
+            );
+            res.json({ message: 'Post successfully deleted' });
         }
     } catch (err) {
         res.status(400).json({ message: err.message });
