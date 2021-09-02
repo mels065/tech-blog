@@ -1,7 +1,6 @@
 #login-register-forms {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 80%;
 }
 
 #login-register-forms button {
