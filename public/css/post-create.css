@@ -1,0 +1,7 @@
+#create-post-form textarea {
+    height: 300px;
+}
+
+#create-post-form button {
+    margin: 15px 0;
+}
