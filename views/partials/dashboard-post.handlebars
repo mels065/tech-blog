@@ -1,6 +1,4 @@
-<div class="dashboard-post">
-    <a href="/post/edit/{{id}}">
-        <h2>{{title}}</h2>
-        <div class="date">{{format_date date_created}}</div>
-    </a>
-</div>
+<li class="dashboard-post row bg-light">
+    <h2 class="col-8"><a class="link-dark text-decoration-none" href="/post/edit/{{id}}">{{title}}</a></h2>
+    <div class="date col-4">{{format_date date_created}}</div>
+</li>
