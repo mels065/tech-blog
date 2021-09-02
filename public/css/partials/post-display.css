@@ -1,0 +1,22 @@
+.post {
+    margin: 20px;
+}
+
+.post header {
+    align-items: center;
+    display: flex;
+    height: 150px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.post .details {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.post .comment-link {
+    margin: 40px;
+    margin-left: 20px;
+}
