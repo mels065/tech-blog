@@ -1,11 +1,11 @@
-<div class="post container" data-id={{id}}>
-    <header class="row bg-light">
+<div class="post" data-id={{id}}>
+    <header class="bg-light">
         {{#if comments}}
-        <h2 class="col-md-8 col-xs-12">{{title}}</h2>
+        <h2>{{title}}</h2>
         {{else}}
-        <a class="col-md-8 col-xs-12 link-dark text-decoration-none" href="/post/{{id}}"><h2>{{title}}</h2></a>
+        <h2><a class="link-dark text-decoration-none" href="/post/{{id}}">{{title}}</a></h2>
         {{/if}}
-        <div class="details col-md-4 col-xs-12"><span>Posted by {{user.username}} on {{format_date date_created}}</span></div>
+        <div class="details">Posted by {{user.username}} on {{format_date date_created}}</div>
     </header>
 
     <p>{{text}}</p>
