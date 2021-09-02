@@ -1,7 +1,7 @@
-#create-post-form textarea {
+#create-post-form textarea, #edit-post-form textarea {
     height: 300px;
 }
 
-#create-post-form button {
+#create-post-form button, #edit-post-form button {
     margin: 15px 0;
 }

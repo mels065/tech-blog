@@ -1,17 +1,17 @@
 <form id="edit-post-form">
-    <h2>Create Post</h2>
+    <h2>Edit Post</h2>
     
-    <div class="form-item">
+    <div class="form-group">
         <label for="title">Title</label>
-        <input name="title" value="{{post.title}}" />
+        <input class="form-control" name="title" value="{{post.title}}" />
     </div>
-    <div class="form-item">
+    <div class="form-group">
         <label for="text">Content</label>
-        <textarea name="text">{{post.text}}</textarea>
+        <textarea class="form-control" name="text">{{post.text}}</textarea>
     </div>
-    <button>Edit</button>
-    <button id="delete-btn">Delete</button>
-    <button>Cancel</button>
+    <button class="btn btn-primary">Edit</button>
+    <button class="btn btn-danger" id="delete-btn">Delete</button>
+    <button class="btn btn-secondary">Cancel</button>
 </form>
 
 <script src="/js/edit-post.js"></script>
