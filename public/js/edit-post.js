@@ -3,7 +3,6 @@ async function editPostHandler(event) {
 
     const url = document.location.href.split('/');
     const id = url[url.length - 1];
-    console.log(id);
     const title = document.querySelector('[name="title"]').value.trim();
     const text = document.querySelector('[name="text"]').value.trim();
 

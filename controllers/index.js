@@ -65,8 +65,9 @@ router.get('/post/:id', async (req, res) => {
             const post = postData.get();
             post.user = post.user.get();
             post.comments = post.comments.map(commentData => {
-                const comment = commentData.get()
+                const comment = commentData.get();
                 comment.user = comment.user.get();
+
                 return comment;
             });
             
@@ -74,9 +75,10 @@ router.get('/post/:id', async (req, res) => {
                 'post',
                 {
                     post,
-                    isLoggedin: req.session.is_loggedin
+                    isLoggedin: req.session.is_loggedin,
+                    currentUserId: req.session.user_id
                 }
-            )
+            );
         } else {
             res.render(
                 '404',

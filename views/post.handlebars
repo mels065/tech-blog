@@ -1,9 +1,8 @@
 {{> post-display post}}
-
 <h3>Comments</h3>
 <ul id="comments" class="list-group">
     {{#each post.comments as |comment|}}
-    {{> comment-display}}
+    {{> comment-display comment=comment post=.. }}
     {{/each}}
 </ul>
 {{#if isLoggedin}}
@@ -12,4 +11,6 @@
     <button class="btn btn-primary">Submit</button>
 </form>
 <script src="/js/submit-comment.js"></script>
+{{else}}
+<p>Please <a class="link-dark" href="/login">login/register</a> to comment</p>
 {{/if}}

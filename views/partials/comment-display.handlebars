@@ -1,7 +1,23 @@
-<li class="comment list-group-item container bg-light">
-    <header class="fw-bold float-right">
-        Posted by {{user.username}} on {{format_date date_created}}
-    </header>
+<li class="comment list-group-item bg-light">
+    <div id="comment-display-{{id}}" class="comment-display">
+        <header class="row">
+            <h3 class="fs-6 col-md-8">Posted by {{user.username}} on {{format_date date_created}}</h3>
+            {{#if (is_current_user_comment post.currentUserId user.id)}}
+            <div class="comment-control-btns col-md-4">
+                <button class="btn btn-primary begin-edit-comment-btn" data-comment-id="{{id}}">Edit</button>
+                <button class="btn btn-danger delete-comment-btn" data-comment-id="{{id}}">Delete</button>
+            </div>
+            {{/if}}
+        </header>
 
-    {{text}}
+        {{text}}
+    </div>
+    <form id="comment-form-{{id}}" class="hide">
+        <textarea class="form-control" name="comment">{{text}}</textarea>
+        <button class="btn btn-primary finish-edit-comment-btn" data-comment-id="{{id}}">Edit</button>
+        <button class="btn btn-secondary cancel-edit-comment-btn" data-comment-id="{{id}}">Cancel</button>
+    </form>
 </li>
+
+<script src="/js/begin-edit-comment.js"></script>
+<script src="/js/cancel-edit-comment.js"></script>
