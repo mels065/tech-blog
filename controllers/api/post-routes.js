@@ -3,7 +3,6 @@ const express = require('express');
 const { Post, Comment } = require('../../models');
 
 const withAuth = require('../../utils/with-auth');
-const { post } = require('./user-routes');
 
 const postRouter = express.Router();
 
