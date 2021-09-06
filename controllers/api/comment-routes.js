@@ -31,4 +31,23 @@ commentRouter.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+commentRouter.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const comment = await Comment.findByPk(id);
+        if (!comment) {
+            res.status(404).json({ message: 'Could not delete comment because it does not exist' });
+        } else if (req.session.user_id !== comment.user_id) {
+            res.status(401).json({ message: "The current user does not have authorization to delete this comment" });
+        } else {
+            await Comment.destroy(
+                { where: { id } }
+            );
+            res.json({ message: 'Comment successfully deleted' });
+        }
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
 module.exports = commentRouter;

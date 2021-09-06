@@ -4,7 +4,6 @@ async function finishEditCommentHandler(event) {
     const id = event.target.dataset.commentId;
 
     const text = document.querySelector(`#comment-form-${id} [name="comment"]`).value.trim();
-    console.log(text);
 
     const response = await fetch(
         `/api/comment/${id}`,
